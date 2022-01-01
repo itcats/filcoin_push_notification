@@ -7,9 +7,9 @@
 // | Date:   2022-01-01 12:37:34
 // +----------------------------------------------------------------------
 
-echo getenv('SEND_KEY');
-exit();
-function sc_send($usdt, $desp = '')
+$send_key = getenv('SEND_KEY');
+
+function sc_send($usdt, $send_key, $desp = '')
 {
     $base_text = 'Filcoin目前价格为：' . $usdt . 'USDT';
     $postdata  = http_build_query(array('text' => $base_text, 'desp' => $desp));
@@ -23,7 +23,7 @@ function sc_send($usdt, $desp = '')
     );
 
     $context = stream_context_create($opts);
-    return $result = file_get_contents('https://sctapi.ftqq.com/' . ["SEND_KEY"] . '.send', false, $context);
+    return $result = file_get_contents('https://sctapi.ftqq.com/' . $send_key . '.send', false, $context);
 }
 
 $api_url = 'https://api.binance.com/api/v3/ticker/price?symbol=FILUSDT';
@@ -50,4 +50,4 @@ function get_filcoin_price($api_url)
 
 $usdt = get_filcoin_price($api_url);
 
-sc_send($usdt);
+sc_send($usdt, $send_key);
