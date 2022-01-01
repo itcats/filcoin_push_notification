@@ -26,9 +26,12 @@ jobs:
       - uses: actions/checkout@v2
 
       - name: Setup PHP Action
-      # You may pin to the exact commit or the version.
-      # uses: shivammathur/setup-php@f24f33ea89cd007c2f0cbdcfdb3f95f707821364
+        # You may pin to the exact commit or the version.
+        # uses: shivammathur/setup-php@f24f33ea89cd007c2f0cbdcfdb3f95f707821364
         uses: shivammathur/setup-php@2.16.0
         with:
-            # Setup PHP version.
-            php-version: 7.4
+          # Setup PHP version.
+          php-version: 7.4
+          tools: none
+        env:
+          fail-fast: true
