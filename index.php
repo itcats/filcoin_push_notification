@@ -9,6 +9,13 @@
 
 $send_key = getenv('SEND_KEY');
 
+/**
+ * server酱推送消息
+ * @param $usdt
+ * @param $send_key
+ * @param $desp
+ * @return false|string
+ */
 function sc_send($usdt, $send_key, $desp = '')
 {
     $base_text = 'Filcoin目前价格为：' . $usdt . 'USDT';
@@ -27,6 +34,11 @@ function sc_send($usdt, $send_key, $desp = '')
 }
 
 $api_url = 'https://api.binance.com/api/v3/ticker/price?symbol=FILUSDT';
+/**
+ * 获取当前USDT价格
+ * @param $api_url
+ * @return mixed|string
+ */
 function get_filcoin_price($api_url)
 {
     // get cURL resource
@@ -50,4 +62,7 @@ function get_filcoin_price($api_url)
 
 $usdt = get_filcoin_price($api_url);
 
-sc_send($usdt, $send_key);
+if ($usdt >= 100) {
+    sc_send($usdt, $send_key);
+}
+
