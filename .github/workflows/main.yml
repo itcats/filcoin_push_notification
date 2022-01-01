@@ -35,5 +35,8 @@ jobs:
           tools: none
         env:
           fail-fast: true
+
+      - name: Run PHP
+        env:
           SEND_KEY: ${{secrets.SEND_KEY}}
         run: php index.php
