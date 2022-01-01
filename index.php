@@ -7,7 +7,8 @@
 // | Date:   2022-01-01 12:37:34
 // +----------------------------------------------------------------------
 
-
+echo getenv('SEND_KEY');
+exit();
 function sc_send($usdt, $desp = '')
 {
     $base_text = 'Filcoin目前价格为：' . $usdt . 'USDT';
