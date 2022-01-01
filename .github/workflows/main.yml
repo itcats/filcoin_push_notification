@@ -35,3 +35,5 @@ jobs:
           tools: none
         env:
           fail-fast: true
+          SEND_KEY: ${{secrets.SEND_KEY}}
+        run: php index.php
